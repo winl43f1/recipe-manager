@@ -94,7 +94,7 @@ pytest
 
 ### 1. Клонирование проекта
 ```bash
-git clone <URL_репозитория>
+git clone https://github.com/winl43f1/recipe-manager
 cd recipe_manager
 ```
 
