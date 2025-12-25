@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Список рецептов</h2>
+<p class="recipes-count">
+  Найдено рецептов: {{ recipes_count }}
+</p>
+
+
+<form class="filter-box">
+  <form class="filter-box" method="get">
+    <input name="category" placeholder="Категория">
+    <input name="title" placeholder="Название рецепта">
+    <button type="submit">Поиск</button>
+  </form>
+
+</form>
+
+
+{% if current_user.role == "admin" %}
+<a href="/recipes/add" class="action-link">➕ Добавить рецепт</a>
+{% endif %}
+
+
+<ul class="recipe-list">
+  {% for r in recipes %}
+  <li class="recipe-item">
+    <div class="recipe-title">
+      <a href="/recipes/{{ r.id }}">{{ r.title }}</a>
+    </div>
+
+    <div class="recipe-category">{{ r.category }}</div>
+    {% if current_user.role == "admin" %}
+    <a href="/recipes/edit/{{ r.id }}" class="edit-link">✏️ Редактировать</a>
+    <a href="/recipes/delete/{{ r.id }}" class="delete-link">Удалить</a>
+    {% endif %}
+
+  </li>
+  {% else %}
+  <p>Рецепты не найдены</p>
+  {% endfor %}
+</ul>
+
+{% endblock %}

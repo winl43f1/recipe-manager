@@ -1,0 +1,18 @@
+# virtual environment
+venv/
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Flask
+instance/
+*.db
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store

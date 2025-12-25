@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ recipe.title }}</h2>
+
+<p><strong>Категория:</strong> {{ recipe.category }}</p>
+
+<h3>Ингредиенты</h3>
+<p>{{ recipe.ingredients }}</p>
+
+<h3>Описание</h3>
+<p>{{ recipe.description }}</p>
+
+<a href="/recipes" class="action-link">← Назад к списку</a>
+{% endblock %}

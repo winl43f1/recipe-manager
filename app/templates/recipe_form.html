@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>
+  {% if edit %}
+  Редактировать рецепт
+  {% else %}
+  Добавить рецепт
+  {% endif %}
+</h2>
+
+<form method="post">
+  {{ form.hidden_tag() }}
+
+  <p>
+    {{ form.title.label }}<br>
+    {{ form.title }}
+  </p>
+
+  <p>
+    {{ form.category.label }}<br>
+    {{ form.category }}
+  </p>
+
+  <p>
+    {{ form.ingredients.label }}<br>
+    {{ form.ingredients }}
+  </p>
+
+  <p>
+    {{ form.description.label }}<br>
+    {{ form.description }}
+  </p>
+
+  <p>{{ form.submit }}</p>
+</form>
+{% endblock %}

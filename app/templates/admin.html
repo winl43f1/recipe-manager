@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="page-title">Пользователи</h2>
+
+<div class="table-wrapper">
+  <table class="users-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Логин</th>
+      <th>Роль</th>
+      <th>Действия</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for user in users %}
+    <tr>
+      <td>{{ user.id }}</td>
+      <td>{{ user.username }}</td>
+      <td>
+          <span class="role {{ user.role }}">
+            {{ user.role }}
+          </span>
+      </td>
+      <td class="actions">
+
+        {% if user.id != current_user.id %}
+        <a href="{{ url_for('main.change_role', user_id=user.id) }}"
+           class="btn btn-role">
+          Сменить роль
+        </a>
+
+        <a href="{{ url_for('main.delete_user', user_id=user.id) }}"
+           class="btn btn-delete"
+           onclick="return confirm('Удалить пользователя?')">
+          Удалить
+        </a>
+        {% else %}
+        <span class="self-note">Это вы</span>
+        {% endif %}
+
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
